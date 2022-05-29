@@ -71,7 +71,7 @@ h3 {
 </head>
 <body style="background: #3e4144;height: 100%;justify-content: center;display: grid;align-content: center;">
 <?php
-    require('db.php');
+    //require('db.php');
     include 'db.php';
     session_start();
     // When form submitted, check and create user session.
@@ -88,7 +88,7 @@ h3 {
         if ($rows == 1) {
             $_SESSION['username'] = $username;
             // Redirect to home page
-            header("Location: home.html");
+            header("Location: home.php");
         } else {
             echo "<div class='form'>
                   <h3>Incorrect Username or password.</h3><br/>

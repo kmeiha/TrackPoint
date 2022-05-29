@@ -1,10 +1,17 @@
+<!DOCTYPE html>
 <html>
-<head>
-
-<title>CSS Position</title>
-<link rel="stylesheet" href="style.css">
-
-</head>
+    <head>
+        <title>Home Page</title>
+    <?php
+        include 'db.php';
+        session_start();
+        if(isset($_SESSION['loggedUser'])){
+            $s = $_SESSION['loggedUser'];
+            $sqlUser = "Select * from users where username = '$s'";
+            $rsUser  = mysqli_query($con,$sqlUser);
+            $rUser   = mysqli_fetch_assoc($rsUser);}
+        else header('location:login.php')?>
+    </head>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 
 <body>
@@ -305,8 +312,8 @@
     </div>
 
     <div class="imageBackgMain">
-      <h1 class="SystemIn">System Invertory Management</h1>
-      <p class="descriptionIn">Try Shopify free for 14 days, and explore all the features you need to start a business fast.</p>
+      <h1 class="SystemIn">Track Point</h1>
+      <p class="descriptionIn">Try Track Point free for 14 days, and explore all the features you need to start a business fast.</p>
       <button class="getStarted" onclick="getStarted()">Get Started</button>
     </div>
 
@@ -314,7 +321,7 @@
       <div class="dolorBox">
         <i class="fa fa-dollar iconAt"  style="font-size:48px;color:rgb(22, 78, 22)"></i>
         <h2 class="titleBoxes">Pricing as low as $29/month</h2>
-        <p class="textBoxes">Choose from over 70 professional and free store templates. Customize colours, imagery, and fonts with ease. No design skills required.</p>
+        <p class="textBoxes">TO DO.</p>
       </div>
       <div class="dribbleBox">
         <i class="fa fa-dribbble iconAt" style="font-size:48px;color:rgb(22, 78, 22)"></i>
