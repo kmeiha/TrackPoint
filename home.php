@@ -2,11 +2,11 @@
 <html>
     <head>
         <title>Home Page</title>
-    <?php
+        <?php
         include 'db.php';
         session_start();
-        if(isset($_SESSION['loggedUser'])){
-            $s = $_SESSION['loggedUser'];
+        if(isset($_SESSION['username'])){
+            $s = $_SESSION['username'];
             $sqlUser = "Select * from users where username = '$s'";
             $rsUser  = mysqli_query($con,$sqlUser);
             $rUser   = mysqli_fetch_assoc($rsUser);}
@@ -306,9 +306,12 @@
     <body>
     
     <div class="topnav">
-      <a  href="home.html">Home</a>
-      <a href="news.html">News</a>
+      <a href="home.php">Home</a>
+      <a href="news.php">News</a>
       <a href="contact.html">Contact</a>
+      <a ><font color="green">Logged:<?php echo $_SESSION['username'] ?></font></a>
+      <a href="logout.php" style="float: right;"><font color="red">Logout</font></a>
+      
     </div>
 
     <div class="imageBackgMain">
@@ -320,18 +323,18 @@
     <div id="threeBoxs">
       <div class="dolorBox">
         <i class="fa fa-dollar iconAt"  style="font-size:48px;color:rgb(22, 78, 22)"></i>
-        <h2 class="titleBoxes">Pricing as low as $29/month</h2>
-        <p class="textBoxes">TO DO.</p>
+        <h2 class="titleBoxes">Pricing as low as $29/5 users</h2>
+        <p class="textBoxes">Work becomes a lot more visible when it’s all in one place. It makes collaboration a whole lot easier. .</p>
       </div>
       <div class="dribbleBox">
         <i class="fa fa-dribbble iconAt" style="font-size:48px;color:rgb(22, 78, 22)"></i>
-        <h2 class="titleBoxes">Drag-and-drop website builder</h2>
-        <p class="textBoxes">Whether you sell online, on social media, in store, or out of the trunk of your car, Shopify has you covered. Start selling anywhere for just $29/month.</p>
+        <h2 class="titleBoxes">Track Point</h2>
+        <p class="textBoxes">Whether you sell online, on social media, in store, or out of the trunk of your car, Track Point has you covered. Start selling anywhere for just $29/5 users.</p>
       </div>
       <div class="instaBox">
         <i class="fa fa-instagram iconAt" style="font-size:48px;color:rgb(22, 78, 22)"></i>
         <h2 class="titleBoxes">Trusted by millions of businesses</h2>
-        <p class="textBoxes">Shopify handles everything from marketing and payments, to secure checkout and shipping</p>
+        <p class="textBoxes">Track Point handles everything from marketing and payments, to secure checkout and shipping</p>
       </div>
     </div>
     <div class="homeTable" id="Table">
@@ -381,7 +384,7 @@
 
          const tableItems = JSON.parse(items);
 
-        for (var item of tableItems) {  mytable += "</tr> <tr><td>" + item.id + "</td>" +" <td>" + item.name + "</td>" + "<td>" + item.salary + "</td><td><a href='./addDetails.html' onclick='javascript:pickedId("+ item.id +");'>Add details</a></td><td><a href='./viewDetails.html' onclick='javascript:pickedId("+ item.id +");'>View details</a></td>"; }
+        for (var item of tableItems) {  mytable += "</tr> <tr><td>" + item.id + "</td>" +" <td>" + item.name + "</td>" + "<td>" + item.salary + "</td><td><a href='./addDetails.php' onclick='javascript:pickedId("+ item.id +");'>Add details</a></td><td><a href='./viewDetails.html' onclick='javascript:pickedId("+ item.id +");'>View details</a></td>"; }
         mytable += "</tr></table>";
         document.getElementById("Table").innerHTML = mytable;
     }

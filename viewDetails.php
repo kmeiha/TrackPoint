@@ -1,8 +1,17 @@
 <html>
 <head>
 
-<title>CSS Position</title>
+<title>View Details</title>
 <link rel="stylesheet" href="style.css">
+<?php
+        include 'db.php';
+        session_start();
+        if(isset($_SESSION['username'])){
+            $s = $_SESSION['username'];
+            $sqlUser = "Select * from users where username = '$s'";
+            $rsUser  = mysqli_query($con,$sqlUser);
+            $rUser   = mysqli_fetch_assoc($rsUser);}
+        else header('location:login.php')?>
 
 </head>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -125,8 +134,8 @@
     <body>
     
     <div class="topnav">
-      <a  href="home.html">Home</a>
-      <a href="news.html">News</a>
+      <a  href="home.php">Home</a>
+      <a href="news.php">News</a>
       <a href="contact.html">Contact</a>
     </div>
 <!-- color,model, origin, date -->

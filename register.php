@@ -109,7 +109,7 @@ h3 {
             if ($result) {
                 echo "<div class='form'>
                       <h3>You are registered successfully.</h3><br/>
-                      <p class='link'>Click <a href='home.html'> here </a> to go to the home page</p>
+                      <p class='link'>Click <a href='home.php'> here </a> to go to the home page</p>
                       </div>";
             } else {
                 echo "<div class='form'>

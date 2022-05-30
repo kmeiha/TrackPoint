@@ -1,5 +1,5 @@
 <?php
-require('db.php');
+//require('db.php');
 include 'db.php';
 
 session_start();
@@ -17,6 +17,4 @@ while($row = mysqli_fetch_array($result)){
     $return_arr[] = array("name" => $name,
                     "salary" => $salary);
 }
-// echo $username;
-// Encoding array in JSON format
 echo json_encode($return_arr);

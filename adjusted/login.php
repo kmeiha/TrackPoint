@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
-    <?php session_start(); ?>
-    <head>
-        <title>Login Page</title>
+<html style="height: 100%;">
+<head>
+    <meta charset="utf-8"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css"/>
     <style>
-html{
+        html{
     height: 100%;
 }
 body {
@@ -65,46 +66,26 @@ h3 {
     text-align: center;
 }
 
-        </style>
-    </head>
-    <body style="background: #3e4144;height: 100%;justify-content: center;display: grid;align-content: center;">
-        <form 
-            class="form"
-            name="frmlogin"
-            action="chklogin.php" 
-            method="post"
-            style="margin: 50px auto;width: 300px;padding: 30px 25px;background: white;max-height: auto;">
-        <table>
-            <tr>
-                <th class="login-title">Login</th>
-            </tr>
-            <tr>
-                <td><label for="user">Username</label></td>
-                <td><input type="text" id="username" class="login-input" name="username" placeholder="Username" autofocus="true"
-                            value="<?php 
+    </style>
+
+</head>
+<body style="background: #3e4144;height: 100%;justify-content: center;display: grid;align-content: center;">
+    <form class="form" method="post" name="login" style="margin: 50px auto;width: 300px;padding: 30px 25px;background: white;max-height: auto;"
+    action="chklogin.php">
+        <h1 class="login-title">Login</h1>
+        <input type="text" id="username" class="login-input" name="username" placeholder="Username" autofocus="true" value="<?php 
                                         if(isset($_SESSION['user'])){
                                             echo $_SESSION['user'];
-                                        }?>"  /></td>
-            </tr>
-            <tr>
-                <td><label for="pass">Password</label></td>
-                <td><input type="password" class="login-input" name="password" placeholder="Password"/></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="login" class="login-button"></td>
-            </tr>
-            <tr>
-                <td><font color="red">
-                    <?php
-                    if(isset($_SESSION['msg'])){ 
-                        echo $_SESSION['msg'];
-                    unset($_SESSION['user']); 
-                    unset($_SESSION['msg']);
-                    }
-                    ?></font>
-                </td>
-            </tr>
-        </table>
-        </form>
-    </body>
+                                        }?>" />
+        <input type="password" class="login-input" name="password" placeholder="Password"/>
+        <input type="submit" value="Login" name="submit" class="login-button"/>
+        <p class="link">You don't have an account? <a href="register.php">Register here</a></p>
+  </form>
+
+<script>
+    var username = document.getElementById('username').value;
+    window.localStorage.setItem('name', username);
+</script>
+
+</body>
 </html>

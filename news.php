@@ -1,8 +1,18 @@
 <html>
 <head>
 
-<title>CSS Position</title>
+<title>News</title>
 <link rel="stylesheet" href="style.css">
+<?php
+        include 'db.php';
+        session_start();
+        if(isset($_SESSION['username'])){
+            $s = $_SESSION['username'];
+            $sqlUser = "Select * from users where username = '$s'";
+            $rsUser  = mysqli_query($con,$sqlUser);
+            $rUser   = mysqli_fetch_assoc($rsUser);}
+        else header('location:login.php')?>
+
 
 </head>
 <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
@@ -235,6 +245,7 @@
       top: 20%;  
     }
     .getStarted{
+      scroll-behavior: smooth;
       color: white;
       padding: 1%;
       border-radius: 10%;
@@ -264,21 +275,22 @@
     <body>
     
     <div class="topnav">
-      <a  href="home.html">Home</a>
-      <a href="news.html">News</a>
+      <a  href="home.php">Home</a>
+      <a href="news.php">News</a>
       <a href="contact.html">Contact</a>
-      <a href="logout.php" style="float: right;">Logout</a>
+      <a ><font color="green">Logged:<?php echo $_SESSION['username'] ?></font></a>
+      <a href="logout.php" style="float: right;"><font color="red">Logout</font></a>
     </div>
     <div class="imageBackgMain">
       <h1 class="SystemIn">What New</h1>
-      <button class="getStarted">Get Started</button>
+      <button><a class="getStarted" href="#nice" style="scroll-behavior: smooth;" >Get Started</a></button>
     </div>
 
     <div>
       <div class="dribbleBox">
         <i class="fa fa-dribbble iconAt" style="font-size:48px;color:rgb(22, 78, 22)"></i>
         <h2 class="titleBoxes">Information</h2>
-        <p class="textBoxes">Whether you sell online, on social media, in store, or out of the trunk of your car, Shopify has you covered. Start selling anywhere for just $29/month.</p>
+        <p class="textBoxes">Whether you sell online, on social media, in store, or out of the trunk of your car, Track Point has you covered. Start selling anywhere for just $29/month.</p>
       </div>
     </div>
     <div class="moveInventory" style="background-color: #333;width: 100%;">
@@ -293,7 +305,7 @@
       <h1 class="thirdTitle">
         ITEMS
       </h1>
-      <h6 class="titleItem">Enter your Items:</h6>
+      <h6 class="titleItem" id="nice">Enter your Items:</h6>
     
       <p class="thirdText">
         <input type="input" id="itemName" style="color:rgb(0, 0, 0);  background-color: white;border: 0px;width: 250px;height: 50px;border-radius: 50px;padding: 0 25px;">
